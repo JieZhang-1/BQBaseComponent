@@ -49,6 +49,7 @@ TODO: Add long description of the pod here.
   end
   s.subspec 'Network' do |ss|
       ss.source_files = 'BQBaseComponent/Classes/Network/*.{h,m}'
+      ss.dependency 'BQBaseComponent/Utils'
       ss.dependency 'BQBaseComponent/Categorys'
   end
   s.subspec 'BQBaseUI' do |ss|

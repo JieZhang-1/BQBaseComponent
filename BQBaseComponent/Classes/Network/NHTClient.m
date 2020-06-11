@@ -9,7 +9,6 @@
 #import "NHTClient.h"
 #import "NHTRequestError.h"
 #import "NSDictionary+Extension.h"
-#import "BQDeviceInfo.h"
 @implementation NHTClient
 + (instancetype)sharedInstance {
     static NHTClient *netClient;

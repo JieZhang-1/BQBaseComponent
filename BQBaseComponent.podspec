@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BQBaseComponent'
-  s.version          = '0.1'
+  s.version          = '0.2'
   s.summary          = 'BQBaseComponent Kit.'
 
 # This description is used to generate tags and improve search results.
@@ -33,7 +33,30 @@ TODO: Add long description of the pod here.
   #s.requires_arc = false
   #s.requires_arc = ['ELDiagnosis/Classes/ARC/**/*.m']
   
-  s.source_files = 'BQBaseComponent/Classes/**/*'
+  #s.source_files = 'BQBaseComponent/Classes/**/*'
+  s.subspec 'CommMacro' do |ss|
+      ss.source_files = 'BQBaseComponent/Classes/CommMacro/*.{h,m}'
+  end
+  s.subspec 'Utils' do |ss|
+      ss.source_files = 'BQBaseComponent/Classes/Utils/*.{h,m}'
+  end
+  s.subspec 'LogCategory' do |ss|
+      ss.source_files = 'BQBaseComponent/Classes/LogCategory/*.{h,m}'
+  end
+  s.subspec 'Categorys' do |ss|
+      ss.source_files = 'BQBaseComponent/Classes/Categorys/*.{h,m}'
+      ss.dependency 'BQBaseComponent/CommMacro'
+  end
+  s.subspec 'Network' do |ss|
+      ss.source_files = 'BQBaseComponent/Classes/Network/*.{h,m}'
+  end
+  s.subspec 'BQBaseUI' do |ss|
+      ss.source_files = 'BQBaseComponent/Classes/BQBaseUI/**/*'
+  end
+  
+  
+  
+  
   
    s.resource_bundles = {
      'BQBaseComponent' => ['BQBaseComponent/Assets/*.png']
@@ -42,5 +65,5 @@ TODO: Add long description of the pod here.
   #s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'AFNetworking', '~> 3.0.0'
-
+  s.dependency 'RTRootNavigationController'
 end

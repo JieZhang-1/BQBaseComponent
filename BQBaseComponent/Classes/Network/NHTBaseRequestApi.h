@@ -1,16 +1,14 @@
 //
-//  NHTClient.h
-//  NHTCreditCard
+//  NHTRequestApi.h
+//  AFNetworking
 //
-//  Created by ZhangJie on 2019/3/20.
-//  Copyright © 2019 ChangYu. All rights reserved.
+//  Created by ZhangJie on 2020/6/11.
 //
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
 #import "NHTRequestError.h"
 NS_ASSUME_NONNULL_BEGIN
-
+#define defaultAPIRequestTimeOutSeconds     15
 typedef enum RequestAccessType {
     kRequestAccessGet,                      // Get方式
     kRequestAccessPost,                     // Post方式
@@ -32,30 +30,22 @@ typedef enum RequestTransferType {
 typedef  void(^NHTRequestSuccessedBlock)(id response);
 typedef  void(^NHTRequestFailedBlock)(NHTRequestError *error);
 
-@protocol NHTRequestProtocol <NSObject>
+@interface NHTBaseRequestApi:NSObject
 
-@required
 @property (nonatomic, readonly) NSString *apiUrl;
 @property (nonatomic, strong) NSMutableDictionary *params;
-- (instancetype)initWithRequestUrl:(NSString *)url;
-- (void)callBackFinishedWithDictionary:(NSDictionary *)dic;
-- (void)callBackFailed:(NHTRequestError *)error;
-@optional
+@property (nonatomic, copy) NHTRequestSuccessedBlock successBlock;
+@property (nonatomic, copy) NHTRequestFailedBlock failBlock;
 @property (nonatomic, assign) BOOL shaSign;
 @property (nonatomic) RequestTransferType transferType;
 @property (nonatomic) RequestAccessType accessType;
 @property (nonatomic, readonly) ApiResultFormat resultFormat;
 @property (nonatomic, readonly) NSTimeInterval timeout;
 
+- (instancetype)initWithRequestUrl:(NSString *)url;
+- (void)callBackFinishedWithDictionary:(NSDictionary *)dic;
+- (void)callBackFailed:(NHTRequestError *)error;
+- (void)appendBaseParams;
 @end
-
-
-@interface NHTClient : NSObject
-+ (instancetype)sharedInstance;
-@property (nonatomic, strong) AFHTTPSessionManager *manager;
-
-+ (void)execute:(id <NHTRequestProtocol>)request;
-@end
-
 
 NS_ASSUME_NONNULL_END

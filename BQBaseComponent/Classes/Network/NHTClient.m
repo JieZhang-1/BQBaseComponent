@@ -42,7 +42,7 @@
     self.manager.securityPolicy = securityPolicy;
 }
 
-- (void)executePostRequest:(id<NHTRequestProtocol>)request {
+- (void)executePostRequest:(NHTBaseRequestApi *)request {
         NSLog(@"%@",self.manager.tasks);
         [self.manager POST:request.apiUrl parameters:request.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSLog(@"\n url:%@,\n API:%@,\n responObject : %@", [task.currentRequest.URL absoluteString],[request.params objectForKey:@"api"],[responseObject description]);
@@ -83,7 +83,7 @@
         }];
 }
 
-- (void)executeGetRequest:(id<NHTRequestProtocol>)request {
+- (void)executeGetRequest:(NHTBaseRequestApi *)request {
         [self.manager GET:request.apiUrl parameters:request.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSLog(@"url:%@, responObject : %@", [task.currentRequest.URL absoluteString],[responseObject description]);
             NSDictionary *resp = [responseObject checkValueNull];
@@ -103,7 +103,7 @@
 }
 
 
-- (void)executeUploadRequest:(id<NHTRequestProtocol>)request {
+- (void)executeUploadRequest:(NHTBaseRequestApi *)request {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSData *data = [request.params objectForKey:@"image"];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -143,7 +143,7 @@
         }];
 }
 
-+ (void)execute:(id<NHTRequestProtocol>)request {
++ (void)execute:(NHTBaseRequestApi *)request {
     switch (request.accessType) {
         case kRequestAccessPost:
         {

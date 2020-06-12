@@ -50,7 +50,7 @@
         }
     }
     NSInteger scale = [UIScreen mainScreen].scale;
-    NSString *imageName = [NSString stringWithFormat:@"%@%zdx.png",icon,scale];
+    NSString *imageName = [NSString stringWithFormat:@"%@@%zdx.png",icon,scale];
     UIImage *image = [UIImage imageName:imageName inBundle:[NSBundle bundleForClass:[self class]]];
     if (viewExist) {
         MBProgressHUD *HUD = (MBProgressHUD *)viewExist;

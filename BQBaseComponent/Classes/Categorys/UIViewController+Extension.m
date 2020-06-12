@@ -10,6 +10,7 @@
 #import "UIButton+WBBlock.h"
 #import "BQCommMacro.h"
 #import "RTRootNavigationController.h"
+#import "UIImage+Extension.h"
 @interface UIViewController()
 
 
@@ -19,8 +20,11 @@
 
 - (UIButton *)backWhiteButtonForNav {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:[UIImage imageNamed:@"home_back_icon"] forState:UIControlStateNormal];
-    [btn setImage:[UIImage imageNamed:@"home_back_icon"] forState:UIControlStateHighlighted];
+    NSInteger scale = [UIScreen mainScreen].scale;
+    NSString *imageName = [NSString stringWithFormat:@"%@%zdx.png",@"home_back_icon",scale];
+    UIImage *image = [UIImage imageName:imageName podsName:@"BQBaseComponent"];
+    [btn setImage:image forState:UIControlStateNormal];
+    [btn setImage:image forState:UIControlStateHighlighted];
     btn.frame = CGRectMake(0, 0, 40, 44);
     btn.contentEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     return btn;
@@ -28,8 +32,11 @@
 
 - (UIButton*) backButton {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:[UIImage imageNamed:@"black_back_icon"] forState:UIControlStateNormal];
-    [btn setImage:[UIImage imageNamed:@"black_back_icon"] forState:UIControlStateHighlighted];
+    NSInteger scale = [UIScreen mainScreen].scale;
+    NSString *imageName = [NSString stringWithFormat:@"%@%zdx.png",@"black_back_icon",scale];
+    UIImage *image = [UIImage imageName:imageName podsName:@"BQBaseComponent"];
+    [btn setImage:image forState:UIControlStateNormal];
+    [btn setImage:image forState:UIControlStateHighlighted];
     btn.frame = CGRectMake(0, 0, 40, 44);
     btn.contentEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
     return btn;

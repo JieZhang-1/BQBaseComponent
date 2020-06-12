@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (Extension)
 + (UIImage *)imageWithColor:(UIColor *)color;
++ (UIImage *)imageName:(NSString *)imageName inBundle:(NSBundle *)bundle;
++ (UIImage *)imageName:(NSString *)imageName podsName:(NSString *)podsName;
 @end
 
 NS_ASSUME_NONNULL_END

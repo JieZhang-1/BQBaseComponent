@@ -20,4 +20,22 @@
     return image;
 }
 
++ (UIImage*)imageName:(NSString *)imageName inBundle:(NSBundle *)bundle {
+    NSString *bundleName = bundle.infoDictionary[@"CFBundleExecutable"];
+    NSString *path = [bundle pathForResource:imageName ofType:nil inDirectory:[NSString stringWithFormat:@"%@.bundle",bundleName]];
+    return [UIImage imageWithContentsOfFile:path];
+}
+
++ (UIImage *)imageName:(NSString *)imageName podsName:(NSString *)podsName {
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.bundle/%@",podsName,imageName]];
+    if (image) {
+        return image;
+    }
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *path = [NSString stringWithFormat:@"%@/Frameworks/%@.framework",mainBundle.resourcePath,podsName];
+    NSBundle *bundle = [NSBundle bundleWithPath:path];
+    UIImage *img = [self imageName:imageName inBundle:bundle];
+    return img;
+}
+
 @end

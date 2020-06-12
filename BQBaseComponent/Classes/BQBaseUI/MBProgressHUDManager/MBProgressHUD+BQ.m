@@ -7,7 +7,7 @@
 //
 
 #import "MBProgressHUD+BQ.h"
-
+#import "UIImage+Extension.h"
 @implementation MBProgressHUD (BQ)
 
 
@@ -32,11 +32,11 @@
 }
 
 + (void)showFailedHUD:(UIView *)superview text:(NSString *)text {
-    
+    [self showHudview:superview text:text icon:@"activityfail" delay:2.0];
 }
 
 + (void)showFailedHUD:(UIView *)superview text:(NSString *)text delay:(NSTimeInterval)delay {
-    
+    [self showHudview:superview text:text icon:@"activityfail" delay:delay];
 }
 
 + (void)showHudview:(UIView *)view text:(NSString *)text icon:(NSString *)icon delay:(NSTimeInterval)delay
@@ -49,9 +49,12 @@
             break;
         }
     }
+    NSInteger scale = [UIScreen mainScreen].scale;
+    NSString *imageName = [NSString stringWithFormat:@"%@%zdx.png",icon,scale];
+    UIImage *image = [UIImage imageName:imageName inBundle:[NSBundle bundleForClass:[self class]]];
     if (viewExist) {
         MBProgressHUD *HUD = (MBProgressHUD *)viewExist;
-        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
+        HUD.customView = [[UIImageView alloc] initWithImage:image];
         HUD.mode = MBProgressHUDModeCustomView;
         HUD.labelText = text;
         [HUD hide:YES afterDelay:delay];
@@ -60,7 +63,7 @@
         HUD.color = [UIColor colorWithWhite:0.1f alpha:0.7];
         HUD.minSize = CGSizeMake(159, 80);
         HUD.detailsLabelFont = HUD.labelFont;
-        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
+        HUD.customView = [[UIImageView alloc] initWithImage:image];
         HUD.mode = MBProgressHUDModeCustomView;
         HUD.labelText = text;
         [HUD hide:YES afterDelay:delay];

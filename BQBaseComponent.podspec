@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BQBaseComponent'
-  s.version          = '0.3'
+  s.version          = '0.4'
   s.summary          = 'BQBaseComponent Kit.'
 
 # This description is used to generate tags and improve search results.

@@ -53,25 +53,6 @@
 }
 
 - (void)setParams:(NSMutableDictionary *)params {
-    NSInteger ts = (NSInteger)([[NSDate date] timeIntervalSince1970] * 1000);
-    NSMutableDictionary *baseParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"1", @"version",
-                                       (self.shaSign?@"sha":@"rsa"), @"signType",
-                                       @"cs", @"proType",
-                                       [NSString stringWithFormat:@"%ld", (long)ts], @"timestamp",
-                                       @"0",@"platform",
-                                       @"2",@"clientType",
-                                       nil];
-    [params setValuesForKeysWithDictionary:baseParams];
-    if (params) {
-        if (self.shaSign) {
-            //NSString *sign = [BQDataManager.manager shaSignWithParameters:params];
-            //[params setValue:sign forKey:@"sign"];
-        }else{
-            //NSString *sign = [BQDataManager.manager signWithParameters:params];
-            //[params setValue:sign forKey:@"sign"];
-        }
-    }
     //[params setValue:sign forKey:@"sign"];
     // 签名处理
     _params = params;
@@ -89,15 +70,17 @@
     }
 }
 
-- (void)appendBaseParams {
+- (NSDictionary *)baseParams {
     NSInteger ts = (NSInteger)([[NSDate date] timeIntervalSince1970] * 1000);
     NSMutableDictionary *baseParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                              @"1", @"version",
-                                              @"rsa", @"signtype",
-                                              @"cs", @"protype",
+                                       @"1", @"version",
+                                       (self.shaSign?@"sha":@"rsa"), @"signType",
+                                       @"cs", @"proType",
                                        [NSString stringWithFormat:@"%ld", (long)ts], @"timestamp",
-                                              nil];
-    [self.params setValuesForKeysWithDictionary:baseParams];
+                                       @"0",@"platform",
+                                       @"2",@"clientType",
+                                       nil];
+    return baseParams;
 }
 
 @end

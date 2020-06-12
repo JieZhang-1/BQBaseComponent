@@ -45,7 +45,7 @@ typedef  void(^NHTRequestFailedBlock)(NHTRequestError *error);
 - (instancetype)initWithRequestUrl:(NSString *)url;
 - (void)callBackFinishedWithDictionary:(NSDictionary *)dic;
 - (void)callBackFailed:(NHTRequestError *)error;
-- (void)appendBaseParams;
+- (NSDictionary *)baseParams;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FBF19402493156D00D2F961 /* BQViewControllerOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF193F2493156D00D2F961 /* BQViewControllerOne.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 /* Begin PBXFileReference section */
 		07423F66E340DBB2BFDA40DB /* BQBaseComponent.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BQBaseComponent.podspec; path = ../BQBaseComponent.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1CCDDCA0036EE7F164916B7E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		2FBF193E2493156D00D2F961 /* BQViewControllerOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BQViewControllerOne.h; sourceTree = "<group>"; };
+		2FBF193F2493156D00D2F961 /* BQViewControllerOne.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BQViewControllerOne.m; sourceTree = "<group>"; };
 		3F4A717CC374776D2E7C24A6 /* Pods-BQBaseComponent_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BQBaseComponent_Tests.release.xcconfig"; path = "Target Support Files/Pods-BQBaseComponent_Tests/Pods-BQBaseComponent_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		43F5BB3977B82042EA1A1D21 /* Pods-BQBaseComponent_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BQBaseComponent_Example.release.xcconfig"; path = "Target Support Files/Pods-BQBaseComponent_Example/Pods-BQBaseComponent_Example.release.xcconfig"; sourceTree = "<group>"; };
 		494DF018BE69686808A1C94A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				2FBF193E2493156D00D2F961 /* BQViewControllerOne.h */,
+				2FBF193F2493156D00D2F961 /* BQViewControllerOne.m */,
 			);
 			name = "Example for BQBaseComponent";
 			path = BQBaseComponent;
@@ -371,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBF19402493156D00D2F961 /* BQViewControllerOne.m in Sources */,
 				6003F59E195388D20070C39A /* BQAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* BQViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
@@ -509,6 +515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -526,6 +533,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

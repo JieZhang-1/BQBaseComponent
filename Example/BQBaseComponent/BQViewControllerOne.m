@@ -7,7 +7,7 @@
 //
 
 #import "BQViewControllerOne.h"
-
+#import "UIViewController+Extension.h"
 @interface BQViewControllerOne ()
 
 @end
@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self addBlackBackButton];
 }
 
 /*

@@ -23,8 +23,11 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = [self class];
-        SEL originalSelector = @selector(viewDidLoad);
-        SEL swizzledSelector = @selector(my_viewDidLoad);
+        SEL originalSelector = @selector(presentViewController:animated:completion:);
+        SEL swizzledSelector = @selector(myPresentViewController:animated:completion:);
+        
+        //swizzling_exchangeMethod(class, originalSelector, swizzledSelector);
+        
         Method originalMethod = class_getInstanceMethod(class, originalSelector);
         Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
         BOOL success = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
@@ -34,17 +37,15 @@
                 method_exchangeImplementations(originalMethod, swizzledMethod);
                 }
         });
+    
 }
 
-- (void)my_viewDidLoad {
-    [self my_viewDidLoad]; // 由于方法交换，实际上调用的是系统的viewDidLoad
-    NSArray *viewcontrollers=self.navigationController.viewControllers;
-    if (viewcontrollers.count > 1) {
-        
-    } else {
-        //present方式
-        self.modalPresentationStyle = UIModalPresentationFullScreen;  // 修改默认值
+- (void)myPresentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
+    //设置满屏，不需要小卡片
+    if(@available(iOS 13.0, *)) {
+        viewControllerToPresent.modalPresentationStyle = UIModalPresentationFullScreen;
     }
+    [self myPresentViewController:viewControllerToPresent animated:flag completion:completion];
 }
 
 

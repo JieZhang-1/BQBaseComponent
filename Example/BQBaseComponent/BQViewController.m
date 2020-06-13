@@ -23,7 +23,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = UIColor.whiteColor;
-    [MBProgressHUD showSuccessHUD:self.view text:@"弹框1"];
+    [MBProgressHUD showSuccessHUD:nil text:@"弹框1"];
     
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

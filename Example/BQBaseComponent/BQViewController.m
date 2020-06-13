@@ -11,7 +11,7 @@
 #import "UIButton+WBBlock.h"
 #import "BQCommMacro.h"
 #import "BQViewControllerOne.h"
-
+#import "BQTwoViewController.h"
 @interface BQViewController ()
 
 @end
@@ -40,6 +40,13 @@
     [self.view addSubview:button];
     
     
+    UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(100, 400, 100, 40)];
+    [button1 wb_handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        BQTwoViewController *vc = [[BQTwoViewController alloc] init];
+        [weakSelf presentViewController:vc animated:YES completion:nil];
+    }];
+    button1.backgroundColor = UIColor.redColor;
+    [self.view addSubview:button1];
 }
 
 - (void)didReceiveMemoryWarning

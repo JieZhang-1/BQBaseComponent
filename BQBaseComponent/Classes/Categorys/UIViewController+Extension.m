@@ -11,12 +11,42 @@
 #import "BQCommMacro.h"
 #import "RTRootNavigationController.h"
 #import "UIImage+Extension.h"
+#import <objc/runtime.h>
 @interface UIViewController()
 
 
 @end
 
 @implementation UIViewController (Extension)
++ (void)load {
+    // 方法交换，为的是当系统调用viewDidLoad时候，调用的是我们的my_viewDidLoad方法
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+        SEL originalSelector = @selector(viewDidLoad);
+        SEL swizzledSelector = @selector(my_viewDidLoad);
+        Method originalMethod = class_getInstanceMethod(class, originalSelector);
+        Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+        BOOL success = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+        if (success) {
+            class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+        } else {
+                method_exchangeImplementations(originalMethod, swizzledMethod);
+                }
+        });
+}
+
+- (void)my_viewDidLoad {
+    [self my_viewDidLoad]; // 由于方法交换，实际上调用的是系统的viewDidLoad
+    NSArray *viewcontrollers=self.navigationController.viewControllers;
+    if (viewcontrollers.count > 1) {
+        
+    } else {
+        //present方式
+        self.modalPresentationStyle = UIModalPresentationFullScreen;  // 修改默认值
+    }
+}
+
 
 - (UIButton *)backWhiteButtonForNav {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

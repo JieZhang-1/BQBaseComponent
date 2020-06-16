@@ -36,7 +36,7 @@
     NSBundle *mainBundle = [NSBundle mainBundle];
     NSString *path = [NSString stringWithFormat:@"%@/Frameworks/%@.framework",mainBundle.resourcePath,podsName];
     NSBundle *bundle = [NSBundle bundleWithPath:path];
-    UIImage *img = [self imageName:imageName inBundle:bundle];
+    UIImage *img = [self imageName:name inBundle:bundle];
     return img;
 }
 

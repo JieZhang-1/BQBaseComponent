@@ -49,9 +49,7 @@
             break;
         }
     }
-    NSInteger scale = [UIScreen mainScreen].scale;
-    NSString *imageName = [NSString stringWithFormat:@"%@@%zdx.png",icon,scale];
-    UIImage *image = [UIImage imageName:imageName podsName:@"BQBaseComponent"];
+    UIImage *image = [UIImage imageName:icon podsName:@"BQBaseComponent"];
     if (viewExist) {
         MBProgressHUD *HUD = (MBProgressHUD *)viewExist;
         HUD.customView = [[UIImageView alloc] initWithImage:image];

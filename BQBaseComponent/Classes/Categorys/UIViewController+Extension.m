@@ -51,9 +51,7 @@
 
 - (UIButton *)backWhiteButtonForNav {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    NSInteger scale = [UIScreen mainScreen].scale;
-    NSString *imageName = [NSString stringWithFormat:@"%@@%zdx.png",@"home_back_icon",scale];
-    UIImage *image = [UIImage imageName:imageName podsName:@"BQBaseComponent"];
+    UIImage *image = [UIImage imageName:@"home_back_icon" podsName:@"BQBaseComponent"];
     [btn setImage:image forState:UIControlStateNormal];
     [btn setImage:image forState:UIControlStateHighlighted];
     btn.frame = CGRectMake(0, 0, 40, 44);
@@ -63,9 +61,7 @@
 
 - (UIButton*) backButton {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    NSInteger scale = [UIScreen mainScreen].scale;
-    NSString *imageName = [NSString stringWithFormat:@"%@@%zdx.png",@"black_back_icon",scale];
-    UIImage *image = [UIImage imageName:imageName podsName:@"BQBaseComponent"];
+    UIImage *image = [UIImage imageName:@"black_back_icon" podsName:@"BQBaseComponent"];
     [btn setImage:image forState:UIControlStateNormal];
     [btn setImage:image forState:UIControlStateHighlighted];
     btn.frame = CGRectMake(0, 0, 40, 44);

@@ -27,7 +27,9 @@
 }
 
 + (UIImage *)imageName:(NSString *)imageName podsName:(NSString *)podsName {
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.bundle/%@",podsName,imageName]];
+    NSInteger scale = [UIScreen mainScreen].scale;
+    NSString *name = [NSString stringWithFormat:@"%@@%zdx.png",imageName,scale];
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.bundle/%@",podsName,name]];
     if (image) {
         return image;
     }
